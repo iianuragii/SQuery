@@ -24,4 +24,10 @@ select productfinish
 from product
 where unitprice in (select unitprice from product where productfinish='Oak');
 
+Q. List product name(s) having qty on hand more than the average qty on hand
+select productfinish,qtyonhand
+from product
+group by qtyonhand
+having qtyonhand > (select avg(qtyonhand) from product);
+
 Q. 
