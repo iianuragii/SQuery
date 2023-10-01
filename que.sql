@@ -45,3 +45,11 @@ Q. List the products which are not made of “Oak” or “Walnut”
 SELECT *
 FROM PRODUCT
 WHERE PRODUCTFINISH NOT IN('Oak','Walnut');
+
+Q. List all products whose unitprice is same as some other product.
+SELECT * 
+FROM PRODUCT P
+WHERE P.UNITPRICE = ANY
+(SELECT UNITPRICE 
+FROM PRODUCT 
+WHERE PRODUCT.PRODUCTNO <> P.PRODUCTNO);
