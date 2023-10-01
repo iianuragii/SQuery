@@ -30,4 +30,18 @@ from product
 group by qtyonhand
 having qtyonhand > (select avg(qtyonhand) from product);
 
-Q. 
+Q. List the product prices if they are increased by 10%.
+SELECT 1.10*UNITPRICE AS INCREASED
+FROM PRODUCT;
+
+Q. List products whose unit price is greater than every unitprice of different productfinish.
+SELECT productdesc
+FROM PRODUCT P
+WHERE UNITPRICE > ( SELECT Unitprice 
+FROM PRODUCT P1
+Where P1.Productfinish <> P.Productfinish); 
+
+Q. List the products which are not made of “Oak” or “Walnut”
+SELECT *
+FROM PRODUCT
+WHERE PRODUCTFINISH NOT IN('Oak','Walnut');
